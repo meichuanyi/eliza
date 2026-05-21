@@ -39,7 +39,7 @@ const ADMIN_SECTIONS = [
   {
     title: "Runtime",
     description: "Monitor the hosted process, logs, health, and deployments.",
-    to: "/dashboard/containers",
+    to: "/dashboard/agents",
     icon: Server,
   },
   {
@@ -69,7 +69,7 @@ const ADMIN_SECTIONS = [
 ] as const;
 
 function getAgentChatPath(agent: AgentWithOwnership | null): string {
-  if (!agent) return "/dashboard/containers";
+  if (!agent) return "/dashboard/agents";
   return agent.username ? `/chat/@${agent.username}` : `/chat/${agent.id}`;
 }
 
@@ -358,7 +358,7 @@ export function MyAgentsClient() {
   });
 
   const handleCreateNew = useCallback(() => {
-    navigate("/dashboard/containers");
+    navigate("/dashboard/agents");
   }, [navigate]);
 
   // Handler for removing saved agents from the list
